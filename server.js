@@ -1,5 +1,9 @@
 const express = require("express");
+const connectDB = require("./config/db");
 const app = express();
+
+// Connect Database
+connectDB();
 
 // Importing Routes
 const authRoutes = require("./routes/auth");
