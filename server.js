@@ -7,9 +7,9 @@ const usersRoutes = require("./routes/users");
 const contactRoutes = require("./routes/contacts");
 
 // Routes Middleware
-app.use("api/auth", authRoutes);
-app.use("api/users", usersRoutes);
-app.use("api/contacts", contactRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/users", usersRoutes);
+app.use("/api/contacts", contactRoutes);
 
 app.get("/", (req, res) => {
   res.json({ msg: "Welcome to the Contact Keeper API" });
