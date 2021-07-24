@@ -5,6 +5,9 @@ const app = express();
 // Connect Database
 connectDB();
 
+// Body Parser
+app.use(express.json());
+
 // Importing Routes
 const authRoutes = require("./routes/auth");
 const usersRoutes = require("./routes/users");

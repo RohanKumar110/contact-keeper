@@ -1,3 +1,4 @@
 {
-    "mongoURI": "mongodb+srv://professor:T1EUOPpYLCmwDaot@contactkeeper.y9awr.mongodb.net/contactKeeper?retryWrites=true&w=majority"
+    "mongoURI": "mongodb+srv://professor:T1EUOPpYLCmwDaot@contactkeeper.y9awr.mongodb.net/contactKeeper?retryWrites=true&w=majority",
+    "jwtSecretKey": "ca2610ec311489100e26355896a34af281fe4f01a85156af8acb7ffabaeeabdabc4bb96dc6599b4c477f8f2b9bf788d05344a78eed014724059be778f966ec75"
 }
