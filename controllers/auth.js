@@ -1,7 +1,4 @@
 const User = require("../models/User");
-const config = require("config");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
 const { validationResult } = require("express-validator");
 
 module.exports.authenticate = async (req, res) => {
