@@ -4,17 +4,19 @@ import ContactContext from "../../context/contact/contactContext";
 
 function ContactItem({ contact }) {
   const contactContext = useContext(ContactContext);
-  const { setCurrentContact, clearCurrentContact, deleteContact } =
+  const { setCurrentContact, clearCurrentContact, deleteContact, clearFilter } =
     contactContext;
   const { id, name, email, phone, type } = contact;
 
   const handleEdit = () => {
     setCurrentContact(contact);
+    clearFilter();
   };
 
   const handleDelete = () => {
     deleteContact(id);
     clearCurrentContact();
+    clearFilter();
   };
 
   return (
