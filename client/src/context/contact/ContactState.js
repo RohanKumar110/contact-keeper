@@ -1,4 +1,4 @@
-import React, { useReducer, useContext } from "react";
+import React, { useReducer } from "react";
 import { v4 as uuid } from "uuid";
 import ContactContext from "./contactContext";
 import contactReducer from "./contactReducer";
@@ -12,7 +12,7 @@ import {
   CLEAR_FILTER,
 } from "../types";
 
-const ContactState = (props) => {
+function ContactState(props) {
   const initialState = {
     contacts: [
       {
@@ -37,29 +37,65 @@ const ContactState = (props) => {
         type: "professional",
       },
     ],
+    currentContact: null,
+    filtered: null,
   };
 
   const [state, dispatch] = useReducer(contactReducer, initialState);
 
   // Add Contact
-
+  const addContact = (contact) => {
+    contact.id = uuid();
+    dispatch({ type: ADD_CONTACT, payload: contact });
+  };
   // Delete Contact
+  const deleteContact = (id) => {
+    dispatch({ type: DELETE_CONTACT, payload: id });
+  };
 
   // Set Current Contact
+  const setCurrentContact = (contact) => {
+    dispatch({ type: SET_CURRENT, payload: contact });
+  };
 
   // Clear Current Contact
+  const clearCurrentContact = () => {
+    dispatch({ type: CLEAR_CURRENT });
+  };
 
   // Update Contacts
+  const updateContact = (contact) => {
+    dispatch({ type: UPDATE_CONTACT, payload: contact });
+  };
 
   // Filter Contacts
+  const filterContacts = (query) => {
+    dispatch({ type: FILTER_CONTACTS, payload: query });
+  };
 
   // Clear Filter
+  const clearFilter = () => {
+    dispatch({ type: CLEAR_FILTER });
+  };
 
   return (
-    <ContactContext.Provider value={{ contacts: state.contacts }}>
+    <ContactContext.Provider
+      value={{
+        contacts: state.contacts,
+        filtered: state.filtered,
+        currentContact: state.currentContact,
+        addContact,
+        deleteContact,
+        updateContact,
+        setCurrentContact,
+        clearCurrentContact,
+        filterContacts,
+        clearFilter,
+      }}
+    >
       {props.children}
     </ContactContext.Provider>
   );
-};
+}
 
 export default ContactState;
