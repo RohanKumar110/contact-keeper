@@ -10,6 +10,12 @@ import { Switch, Route } from "react-router-dom";
 import AuthState from "../context/auth/AuthState";
 import AlertState from "../context/alert/AlertState";
 import ContactState from "../context/contact/ContactState";
+import setAuthToken from "../utils/setAuthToken";
+
+// Set token as Global header
+if(localStorage.token){
+  setAuthToken(localStorage.token);
+}
 
 function App() {
   return (
