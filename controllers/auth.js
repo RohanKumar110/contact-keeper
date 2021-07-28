@@ -22,5 +22,5 @@ module.exports.authenticate = async (req, res) => {
 module.exports.getLoggedInUser = async (req, res) => {
   const { id } = req.user;
   const user = await User.findById(id).select("-password");
-  res.status(200).json({ user });
+  res.status(200).json(user);
 };
