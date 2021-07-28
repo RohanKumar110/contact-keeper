@@ -30,6 +30,7 @@ function Login() {
             placeholder="email"
             value={email}
             onChange={handleChange}
+            required
           />
         </div>
         <div className="form-group">
@@ -41,6 +42,7 @@ function Login() {
             placeholder="password"
             value={password}
             onChange={handleChange}
+            required
           />
         </div>
         <button className="btn btn-primary btn-block">Login</button>

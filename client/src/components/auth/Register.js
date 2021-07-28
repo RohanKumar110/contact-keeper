@@ -1,6 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import AlertContext from "../../context/alert/alertContext";
 
 function Register() {
+  const alertContext = useContext(AlertContext);
+  const { setAlert } = alertContext;
+
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -14,7 +18,10 @@ function Register() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Registered");
+    if (password !== confirmPassword) {
+      setAlert("Passwords do not match", "danger");
+    } else {
+    }
   };
 
   return (
@@ -32,6 +39,7 @@ function Register() {
             placeholder="name"
             value={name}
             onChange={handleChange}
+            required
           />
         </div>
         <div className="form-group">
@@ -43,6 +51,7 @@ function Register() {
             placeholder="email"
             value={email}
             onChange={handleChange}
+            required
           />
         </div>
         <div className="form-group">
@@ -51,9 +60,11 @@ function Register() {
             type="password"
             name="password"
             id="password"
+            minLength="6"
             placeholder="password"
             value={password}
             onChange={handleChange}
+            required
           />
         </div>
         <div className="form-group">
@@ -62,9 +73,11 @@ function Register() {
             type="password"
             name="confirmPassword"
             id="confirmPassword"
-            placeholder="confirmPassword"
+            placeholder="confirm password"
             value={confirmPassword}
             onChange={handleChange}
+            minLength="6"
+            required
           />
         </div>
         <button className="btn btn-primary btn-block">Register</button>
