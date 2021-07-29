@@ -52,6 +52,7 @@ function ContactForm() {
         name="name"
         value={name}
         onChange={handleChange}
+        required
       />
       <input
         type="email"
