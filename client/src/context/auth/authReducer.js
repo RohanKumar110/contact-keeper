@@ -19,7 +19,16 @@ function authReducer(state, action) {
         isAuthenticated: true,
         loading: false,
       };
+    case LOGIN_SUCCESS:
+      localStorage.setItem("token", action.payload.token);
+      return {
+        ...state,
+        token: action.payload.token,
+        isAuthenticated: true,
+        loading: false,
+      };
     case REGISTER_FAIL:
+    case LOGIN_FAIL:
     case AUTH_ERROR:
       localStorage.removeItem("token");
       return {
@@ -33,12 +42,12 @@ function authReducer(state, action) {
     case USER_LOADED:
       return {
         ...state,
-        loading:false,
+        loading: false,
         isAuthenticated: true,
-        user: action.payload
-      }  
+        user: action.payload,
+      };
     case CLEAR_ERRORS:
-      return { ...state, error: null };  
+      return { ...state, error: null };
     default:
       return state;
   }
