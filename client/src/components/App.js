@@ -11,6 +11,7 @@ import AuthState from "../context/auth/AuthState";
 import AlertState from "../context/alert/AlertState";
 import ContactState from "../context/contact/ContactState";
 import setAuthToken from "../utils/setAuthToken";
+import PrivateRoute from "./routing/PrivateRoute";
 
 // Set token as Global header
 if(localStorage.token){
@@ -27,7 +28,7 @@ function App() {
             <div className="container">
               <Alerts />
               <Switch>
-                <Route exact path="/" component={Home} />
+                <PrivateRoute exact path="/" component={Home} />
                 <Route exact path="/about" component={About} />
                 <Route exact path="/register" component={Register} />
                 <Route exact path="/login" component={Login} />
