@@ -10,15 +10,23 @@ function Navbar({ title, icon }) {
   const handleLogout = () => {
     logout();
   };
+  const btnStyle = {
+    background: "none",
+    border: "none",
+    outline: "none",
+    color: "white",
+    marginLeft: "15px",
+    cursor: "pointer",
+  };
 
   const authLinks = (
     <Fragment>
       <li>Hello {user && user.name}</li>
       <li>
-        <a href="#" onClick={handleLogout}>
+        <button style={btnStyle} onClick={handleLogout}>
           <i className="fas fa-sign-out-alt"></i>
           <span className="hide-sm">Logout</span>
-        </a>
+        </button>
       </li>
     </Fragment>
   );
