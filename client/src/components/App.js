@@ -9,14 +9,9 @@ import React, { Fragment } from "react";
 import AuthState from "../context/auth/AuthState";
 import AlertState from "../context/alert/AlertState";
 import ContactState from "../context/contact/ContactState";
-import setAuthToken from "../utils/setAuthToken";
 import PrivateRoute from "./routing/PrivateRoute";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-// Set token as Global header
-if (localStorage.token) {
-  setAuthToken(localStorage.token);
-}
 
 function App() {
   return (
